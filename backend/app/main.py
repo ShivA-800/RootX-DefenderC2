@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import codes
+from app.routers import codes, agents
 
 app = FastAPI(title="DefenderC2-backend")
 
@@ -13,6 +13,7 @@ app.add_middleware(
 )
 
 app.include_router(codes.router, prefix="/api/v1")
+app.include_router(agents.router, prefix="/api/v1")
 
 
 @app.get("/api/v1/health")
